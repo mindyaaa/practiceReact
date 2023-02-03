@@ -24,7 +24,10 @@ export default function Products() {
                 )) }
                 {error && <p>에러가 발생했음</p>}
             </ul>
+
         </>
     );
 }
+
+
 
