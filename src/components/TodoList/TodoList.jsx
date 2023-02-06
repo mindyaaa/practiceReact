@@ -5,7 +5,7 @@ import AddTodo from '../AddTodo/AddTodo';
 import { v4 as uuidv4 } from 'uuid';
 import Todo from './Todo';
 
-export default function TodoList() {
+export default function TodoList({filter}) {
     const [todos, setTodos] = useState([
         {id:123, text: '요리하기', status: 'active'},
         {id:124, text: '밥먹기', status: 'active'},
@@ -25,11 +25,13 @@ export default function TodoList() {
         setTodos(todos.filter((todo) => todo.id !== deleted.id));
     }
 
-    return (
-        <section className={styles.todoContainer}>
+    const filtered = getFilterTodos(todos, filter);
 
-            <ul>TO-DO LIST
-            {todos.map((todo) => 
+    return (
+        <section className={styles.container}>
+
+            <ul className={styles.list}>   
+            {filtered.map((todo) => 
                 <Todo 
                 key={todo.id}
                 todo={todo}
@@ -43,6 +45,16 @@ export default function TodoList() {
 
         </section>
     );
+}
+
+function getFilterTodos(todos, filter) {
+    if (filter === 'all') {
+        return todos;
+    }
+
+    else {
+        return todos.filter((todo) => todo.status === filter);
+    }
 }
 
 

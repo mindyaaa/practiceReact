@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import styles from './AddTodo.module.css';
 
 export default function AddTodo({onAdd}) {
 
@@ -23,15 +24,19 @@ export default function AddTodo({onAdd}) {
 
     return (
         <form 
+        className={styles.form}
         onSubmit={submitHandler}>
             <input
+            className={styles.input}
             placeholder='Add To-dos'
             type='text'
             value={added}
             onChange={changeHandler}
             ></input>
             
-            <button>ADD</button>
+            <button
+            className={styles.button}
+            >ADD</button>
         </form>
     );
 }
