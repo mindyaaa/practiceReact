@@ -20,6 +20,7 @@ export default function AddTodo({onAdd}) {
         }
         onAdd({id : uuidv4(), text : `${added}`, status : 'active'});
         setAdded('');
+
         }
 
 
@@ -41,4 +42,3 @@ export default function AddTodo({onAdd}) {
         </form>
     );
 }
-

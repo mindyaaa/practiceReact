@@ -16,8 +16,8 @@ export default function Todo({todo, onDelete, onUpdate}) {
                 onChange={changeHandler} 
                 checked={todo.status === 'completed'} 
                 type='checkbox' 
-                id='todoCheckBox'/>
-                <label htmlFor='todoCheckBox'>{todo.text}</label>
+                id={todo.id}/>
+                <label htmlFor={todo.id}>{todo.text}</label>
                 <span className={styles.icon}>
                 <button 
                 className={styles.button}

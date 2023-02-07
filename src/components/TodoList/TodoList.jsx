@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { useImmer } from 'use-immer';
 import styles from './TodoList.module.css';
 import AddTodo from '../AddTodo/AddTodo';
@@ -6,12 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Todo from './Todo';
 
 export default function TodoList({filter}) {
-    const [todos, setTodos] = useState([
-        {id:123, text: '요리하기', status: 'active'},
-        {id:124, text: '밥먹기', status: 'active'},
-        {id:125, text: '설거지하기', status: 'active'},
-        {id:126, text: '동숲', status: 'active'}
-    ]);
+    const [todos, setTodos] = useState(readTodos);
 
     const onAdd = (newTodo) => {
         setTodos((prev) => ([...prev, newTodo]));
@@ -26,6 +21,10 @@ export default function TodoList({filter}) {
     }
 
     const filtered = getFilterTodos(todos, filter);
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos));
+    },[todos]);
 
     return (
         <section className={styles.container}>
@@ -45,6 +44,11 @@ export default function TodoList({filter}) {
 
         </section>
     );
+}
+
+function readTodos() {
+    const todos = localStorage.getItem('todos');
+    return todos ? JSON.parse(todos) : [];
 }
 
 function getFilterTodos(todos, filter) {
