@@ -16,6 +16,7 @@ export default function AddTodo({onAdd}) {
         e.preventDefault();
         if (added.trim().length === 0) {
             alert('내용을 입력해주세요');
+            return setAdded('');
         }
         onAdd({id : uuidv4(), text : `${added}`, status : 'active'});
         setAdded('');

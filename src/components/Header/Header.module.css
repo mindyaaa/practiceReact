@@ -1,10 +1,23 @@
 .header {
+    padding: 0 0.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--color-bg-dark);
     border-bottom: 1px solid var(--color-grey);
 }
+
+.toggle {
+    background-color: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 150ms ease-in-out
+}
+
+.toggle:hover {
+    transform: scale(1.1);
+}
+
 
 .filters {
     display: flex;

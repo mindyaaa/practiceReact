@@ -43,6 +43,13 @@ body {
   box-shadow: 5px 5px 21px 4px rgba(0, 0, 0, 0.45);
 }
 
+html.dark {
+  --color-bg-dark: #1a1c35;
+  --color-bg: #22243b;
+  --color-grey: #4e4e4e;
+  --color-text: #fdfffd;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
